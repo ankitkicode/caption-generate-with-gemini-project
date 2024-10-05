@@ -7,7 +7,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true); // Add a loading state
-
+    
   // Function to handle Google login redirection
   const GoogleLogin = () => {
     window.open("https://caption-generate-with-gemini-project.onrender.com/auth/google", "_self"); // Redirect to your Passport.js Google auth route
@@ -40,6 +40,8 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     fetchUser(); // Check if a user is already logged in when the app loads
   }, []);
+
+  console.log({user ,message : "from useEffect"})
 
   return (
     <AuthContext.Provider value={{ user, loading, GoogleLogin, logout }}>
