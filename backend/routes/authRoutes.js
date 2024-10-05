@@ -6,11 +6,15 @@ router.get('/google', passport.authenticate('google', {
     scope: ['profile', 'email']
 }));
 
-// Google auth callback
-router.get('/google/callback', passport.authenticate('google'), (req, res) => {
-    // Successful authentication, redirect home.
-    res.redirect('https://caption-generate-with-gemini-project-1.onrender.com'); 
-});
+router.get('/google/callback', 
+    passport.authenticate('google', {
+      failureRedirect: 'https://caption-generate-with-gemini-project-1.onrender.com/login-failed'
+    }), 
+    (req, res) => {
+      // Successful authentication
+      res.redirect('https://caption-generate-with-gemini-project-1.onrender.com'); 
+    }
+  );
 
 router.get('/logout', (req, res, next) => {
     // Destroy the session
@@ -34,9 +38,12 @@ router.get('/logout', (req, res, next) => {
     });
 });
 
-// Get current user
 router.get('/current_user', (req, res) => {
-    res.send(req.user);
+    if (req.user) {
+        res.json({ user: req.user });
+    } else {
+        res.status(401).json({ message: 'No user logged in' });
+    }
 });
 
 module.exports = router;

@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     
   // Function to handle Google login redirection
   const GoogleLogin = () => {
-    window.open("https://caption-generate-with-gemini-project.onrender.com/auth/google", "_self"); // Redirect to your Passport.js Google auth route
+    window.open("https://caption-generate-with-gemini-project.onrender.com/auth/google", "_self");
   };
 
   // Function to log out the user
@@ -28,7 +28,8 @@ export const AuthProvider = ({ children }) => {
   const fetchUser = async () => {
     try {
       const response = await axios.get("https://caption-generate-with-gemini-project.onrender.com/auth/current_user", { withCredentials: true });
-      setUser(response.data);
+      console.log(response.data.user)
+      setUser(response.data.user);
     } catch (error) {
       console.error("Error fetching user:", error);
     } finally {

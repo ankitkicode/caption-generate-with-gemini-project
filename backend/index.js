@@ -24,9 +24,10 @@ app.use(express.urlencoded({ extended: true }));
 // CORS configuration for your frontend
 app.use(cors({
   origin: 'https://caption-generate-with-gemini-project-1.onrender.com', // Allow requests from your frontend
-  credentials: true // Allow cookies to be sent from your frontend
+  credentials: true 
 }));
 
+app.set('trust proxy', 1);
 // Express session configuration
 app.use(expressSession({
   secret: process.env.SESSION_SECRET || 'your_secret_key', 
@@ -34,6 +35,9 @@ app.use(expressSession({
   saveUninitialized: false,
     cookie: {
     secure: true,
+    httpOnly: true,
+    sameSite: 'None', // Allows cookies to be sent in cross-site contexts
+    maxAge: 24 * 60 * 60 * 1000 
   }
 }));
 
