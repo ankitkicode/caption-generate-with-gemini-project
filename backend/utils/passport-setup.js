@@ -23,7 +23,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
     clientID:CLIENT_ID,
     clientSecret: CLIENT_SECRET,
-    callbackURL: 'https://caption-generate-with-gemini-project.onrender.com/auth/google/callback' 
+    callbackURL: 'https://caption-generate-with-gemini-project.onrender.com/auth/google/callback'
 }, async (accessToken, refreshToken, profile, done) => {
     // console.log('Google profile:', profile);
     // Extract the email from the profile

@@ -29,7 +29,7 @@ app.use(cors({
 
 // Express session configuration
 app.use(expressSession({
-  secret: process.env.SESSION_SECRET || 'your_secret_key', // Use environment variable for secret
+  secret: process.env.SESSION_SECRET || 'your_secret_key', 
   resave: false,
   saveUninitialized: false,
     cookie: {
