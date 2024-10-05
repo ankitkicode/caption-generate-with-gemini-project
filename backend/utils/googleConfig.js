@@ -9,6 +9,7 @@ const googleClientSecret = process.env.GOOGLR_CLIENT_SECRET;
 const  oauth2Client = new google.auth.OAuth2(
     googleClientId,
     googleClientSecret,
+    'https://caption-generate-with-gemini-project.onrender.com/auth/google/callback'
 );
 
 module.exports = oauth2Client
