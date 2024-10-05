@@ -11,7 +11,7 @@ export const CaptionProvider = ({ children }) => {
   const generateCaption = async (formData) => {
     setLoading(true); 
     try {
-      const response = await axios.post("http://localhost:5000/api/generateCaption", formData, {withCredentials: true });
+      const response = await axios.post("https://caption-generate-with-gemini-project.onrender.com/api/generateCaption", formData, {withCredentials: true });
     //  console.log(response.data)
       setCaption(response.data.caption);
     } catch (error) {

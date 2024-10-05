@@ -9,7 +9,7 @@ router.get('/google', passport.authenticate('google', {
 // Google auth callback
 router.get('/google/callback', passport.authenticate('google'), (req, res) => {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:5173/'); 
+    res.redirect('https://caption-generate-with-gemini-project-1.onrender.com'); 
 });
 
 router.get('/logout', (req, res, next) => {

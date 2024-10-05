@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS configuration for your frontend
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow requests from your frontend
+  origin: 'https://caption-generate-with-gemini-project-1.onrender.com', // Allow requests from your frontend
   credentials: true // Allow cookies to be sent from your frontend
 }));
 
