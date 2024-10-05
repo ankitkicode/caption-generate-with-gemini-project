@@ -3,6 +3,16 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/userModel');
 
+
+// Ensure environment variables are available
+const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+
+// console.log({
+//     CLIENT_ID,
+//     CLIENT_SECRET
+// })
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
@@ -14,8 +24,8 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    clientID:CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
     callbackURL: 'http://localhost:5000/auth/google/callback' 
 }, async (accessToken, refreshToken, profile, done) => {
     // console.log('Google profile:', profile);
