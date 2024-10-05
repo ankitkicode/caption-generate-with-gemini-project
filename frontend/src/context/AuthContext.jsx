@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   const fetchUser = async () => {
     try {
       const response = await axios.get("https://caption-generate-with-gemini-project.onrender.com/auth/current_user", { withCredentials: true });
-      console.log(response.data.user)
+      // console.log(response.data.user)
       setUser(response.data.user);
     } catch (error) {
       console.error("Error fetching user:", error);
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
     fetchUser(); // Check if a user is already logged in when the app loads
   }, []);
 
-  console.log({user ,message : "from useEffect"})
+  // console.log({user ,message : "from useEffect"})
 
   return (
     <AuthContext.Provider value={{ user, loading, GoogleLogin, logout }}>

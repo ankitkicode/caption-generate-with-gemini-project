@@ -9,11 +9,11 @@ export const CaptionProvider = ({ children }) => {
 
   // Function to handle caption generation
   const generateCaption = async (formData) => {
-    console.log({formData})
+    // console.log({formData})
     setLoading(true); 
     try {
       const response = await axios.post("https://caption-generate-with-gemini-project.onrender.com/api/generateCaption", formData, {withCredentials: true });
-     console.log(response.data)
+    //  console.log(response.data)
       setCaption(response.data.caption);
     } catch (error) {
       console.error("Error generating caption:", error);
