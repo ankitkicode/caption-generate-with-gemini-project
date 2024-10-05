@@ -32,7 +32,11 @@ app.use(expressSession({
   secret: process.env.SESSION_SECRET || 'your_secret_key', // Use environment variable for secret
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }
+    cookie: {
+    secure: true,
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000
+  }
 }));
 
 // Initialize Passport and handle sessions
